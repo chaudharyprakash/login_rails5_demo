@@ -1,0 +1,36 @@
+  
+    <% if @employee.errors.any? %>
+        <div id="error_explanation">
+            <h2>
+                <%= pluralize(@employee.errors.count, "error") %> Errors
+            </h2>
+            <ul>
+                <% @employee.errors.full_messages.each do |message| %>
+                    <li>
+                        <%= message %>
+                    </li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+<%= form_for(@employee,:remote => true) do |f| %> 
+    <table align="center">
+        <tr>
+            <td>Firstname<span class="required"></span></td>
+            <td><%= f.text_field :emp_firstname, :required => true%></td>
+        </tr>
+        <tr>
+            <td>Lastname<span class="required"></span></td>
+            <td><%= f.text_field :emp_lastname, :required => true %></td>
+        </tr>
+        <tr>
+            <td>Email_id<span class="required"></span></td>
+            <td><%= f.text_field :email, :required => true%></td>
+        </tr>
+        <tr>
+            
+            <td><%= f.submit 'Register'%></td>
+        </tr>
+<%end%> 
+<div id="emp_entries">
+</div>
